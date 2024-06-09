@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 import { NavigationMenuDemo } from '@/components/NavigationMenuDemo';
 import AnimatedTooltipPreview from '@/components/ui/techstack';
 import { AnimatedListDemo } from '@/components/listdemo';
-import { FollowerPointerCard, FollowingPointerDemo as PointerCard } from '@/components/ui/hackcard';
+import { FollowingPointerDemo as PointerCard } from '@/components/ui/hackcard';
 
 interface BlogContent {
   slug: string;
