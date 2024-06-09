@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import ProjectTag from "@/components/ProjectTag";
 import ProjectCard from '@/components/Certcard' // Adjust the path as needed
 import { NavigationMenuDemo } from "@/components/NavigationMenuDemo";
+import Home from "@/components/canvas/hack3d";
 
 type Project = {
   id: number;
@@ -386,13 +387,17 @@ const Page: React.FC = () => {
       style={{ backgroundImage: "url(/mountains.jpg)" }}
       className="w-screen h-screen flex items-center flex-col justify-center bg-center bg-cover overflow-scroll overflow-x-hidden"
     >
-      <h2 className="text-center text-4xl font-bold text-white mt-14 md:mb-12">
+      <h2 className="text-center text-4xl font-bold text-white z-10 mt-14 md:mb-12">
         My Certificates
       </h2>
       
       {/* Add NavigationMenuDemo */}
       <div className="absolute top-20 left-0 text-white py-4">
         <NavigationMenuDemo />
+      </div>
+
+      <div className="fixed inset-0 z-0">
+        <Home />
       </div>
       
       <div className="flex items-center flex-col gap-5 max-w-[90%] max-h-[90%] sm:px-5">

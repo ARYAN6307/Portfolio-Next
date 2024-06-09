@@ -1,6 +1,5 @@
-"use client";
-
-import React, { useEffect } from 'react';
+'use client';
+import React, { useState, useEffect } from 'react';
 import gsap from 'gsap';
 import Image from 'next/image';
 import EmailSection from '@/components/Email';
@@ -9,6 +8,8 @@ import { NavigationMenuDemo } from '@/components/NavigationMenuDemo';
 import AnimatedTooltipPreview from '@/components/ui/techstack';
 import { AnimatedListDemo } from '@/components/listdemo';
 import { FollowingPointerDemo as PointerCard } from '@/components/ui/hackcard';
+import Home from '@/components/canvas/hack3d';
+import Homee from '@/components/canvas/hack3dd';
 
 interface BlogContent {
   slug: string;
@@ -54,27 +55,38 @@ const blogContents: BlogContent[] = [
 ];
 
 export default function Hackathons() {
+  const [isFirstPage, setIsFirstPage] = useState(true);
+
+  useEffect(() => {
+    setIsFirstPage(true);
+  }, []);
+
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power4.inOut', duration: 1 } });
-
     tl.to('.hackathons-header', { clipPath: 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)', opacity: 1, y: 0 }, 0.2);
   }, []);
 
   const hackathonItems = [
-    { id: 1, name: 'Aryan Pandey', designation: 'Android dev', image: '/html.png' },
-    { id: 2, name: 'Tanmay Singh', designation: 'Ppt Maker', image: '/css.png' },
-    { id: 4, name: 'Sudhanshu Pandey', designation: 'Animator', image: '/js.png' },
-    { id: 5, name: 'Aryan Lakhanpal', designation: 'Database Handler', image: '/js.png' },
-    { id: 6, name: 'Mohak Purwar', designation: 'Web dev', image: '/js.png' },
+    { id: 1, name: 'Aryan Pandey', designation: 'Android dev', image: '/gallery/mee.jpeg' },
+    { id: 2, name: 'Tanmay Singh', designation: 'Presentator', image: '/gallery/tanmay.jpeg' },
+    { id: 4, name: 'Sudhanshu Pandey', designation: 'Animator', image: '/gallery/sudu.jpg' },
+    { id: 5, name: 'Aryan Lakhanpal', designation: 'Database Handler', image: '/gallery/lakh.jpeg' },
+    { id: 6, name: 'Mohak Purwar', designation: 'Web dev', image: '/gallery/muku.jpeg' },
   ];
 
   return (
-    <main className="w-full h-screen relative bg-cover overflow-x-hidden m-0 p-0" style={{ backgroundImage: 'url(/mountains.jpg)' }}>
+    <main className="w-full h-screen relative overflow-x-hidden m-0 p-0">
+        <div className="fixed inset-0 z-0">
+          <Home />
+        </div>
+      
+
       <div className="absolute top-20 left-0 text-white py-4 z-20">
         <NavigationMenuDemo />
+        
       </div>
-
-      <div className="flex flex-col items-center justify-center w-full h-full">
+      
+      <div className="relative z-10 flex flex-col items-center justify-center w-full min-h-screen">
         <div className="relative z-10 flex flex-col items-center text-center pl-5 pb-20 gap-5 max-w-[850px]">
           <h1 className="text-[25px] md:text-[50px] hackathons-header text-white font-semibold transform translate-y-100 opacity-0" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)' }}>
             Hackathons I Participated In
@@ -83,15 +95,19 @@ export default function Hackathons() {
             Here you can find information about the hackathons I have participated in, the projects I built, and the experiences I gained. Feel free to explore and reach out if you want to collaborate on future hackathons!
           </p>
         </div>
+        <div className="h-100">
+          <Homee />
+        </div>
+        
       </div>
 
-      <div className="flex flex-col w-full bg-cover bg-center h-auto lg:px-40 sm:px-20">
+      <div className="relative z-10 flex flex-col w-full bg-cover bg-center min-h-screen lg:px-40 sm:px-20">
         <div className="m-5">
           {/* Winning Hackathon Section */}
           <section className="w-full py-10 sm:px-5">
             <h2 className="text-[20px] md:text-[40px] text-white font-semibold text-center mb-5">Winning Hackathon</h2>
             <div className="flex flex-col sm:flex-row gap-10 sm:gap-5">
-              <div className="flex flex-col items-center w-full sm:w-1/2 h-full">
+              <div className="flex flex-col items-center w-full sm:w-1/2 h-full rounded-lg border bg-black px-6 shadow-lg">
                 <Image
                   src="/gallery/technova.jpg"
                   alt="Winning Hackathon"
@@ -101,7 +117,7 @@ export default function Hackathons() {
                 />
                 <AnimatedTooltipPreview items={hackathonItems} />
               </div>
-              <div className="flex flex-col items-center w-full sm:w-1/2 h-full">
+              <div className="flex flex-col items-center bg-black w-full sm:w-1/2 h-full">
                 <AnimatedListDemo />
               </div>
             </div>
@@ -125,8 +141,9 @@ export default function Hackathons() {
 
           <EmailSection />
           <Footer />
+          </div>
         </div>
-      </div>
-    </main>
-  );
-}
+      </main>
+    );
+  }
+  

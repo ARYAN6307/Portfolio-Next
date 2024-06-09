@@ -1,16 +1,15 @@
 'use client';
 import React, { useEffect } from 'react';
 import gsap from 'gsap';
+import ImageSlider from '@/components/ImageSliderGcp';
 import EmailSection from "@/components/Email";
 import Footer from "@/components/Footer";
 import { NavigationMenuDemo } from "@/components/NavigationMenuDemo";
-import ImageSlider from '@/components/ImageSliderGcp';
+import Home from '@/components/canvas/hack3d';
 
 export default function GoogleCloudAchievements() {
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power4.inOut", duration: 1 } });
-
-    // Animate elements on the page
     tl.to('.achievements-header', { clipPath: 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)', opacity: 1, y: 0 }, 0.2);
   }, []);
 
@@ -29,13 +28,17 @@ export default function GoogleCloudAchievements() {
   ];
 
   return (
-    <main className="w-full h-screen relative bg-cover overflow-y-scroll m-0 p-0" style={{ backgroundImage: "url(/mountains.jpg)" }}>
-      {/* Navigation Menu */}
+    <main className="w-full h-screen relative overflow-y-scroll m-0 p-0">
       <div className="absolute top-20 left-0 text-white py-4 z-20">
         <NavigationMenuDemo />
       </div>
 
-      <div className="flex flex-col items-center justify-center w-full h-full">
+      {/* Home as Background */}
+      <div className="fixed inset-0 z-0">
+        <Home />
+      </div>
+
+      <div className="flex flex-col items-center justify-center w-full h-full relative">
         <div className="relative z-10 flex flex-col items-center text-center pl-5 pb-20 gap-5 max-w-[850px]">
           <h1 className="text-[25px] md:text-[50px] achievements-header text-white font-semibold transform translate-y-100 opacity-0" style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)' }}>
             Google Cloud Achievements

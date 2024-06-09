@@ -4,20 +4,24 @@ import gsap from 'gsap';
 import EmailSection from "@/components/Email";
 import Footer from "@/components/Footer";
 import { NavigationMenuDemo } from "@/components/NavigationMenuDemo";
+import Home from '@/components/canvas/hack3d';
 
 export default function CodingProfiles() {
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power4.inOut", duration: 1 } });
-
-    // Animate elements on the page
     tl.to('.coding-header', { clipPath: 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)', opacity: 1, y: 0 }, 0.2);
   }, []);
 
   return (
-    <main className="w-full h-screen relative bg-cover overflow-y-scroll m-0 p-0" style={{ backgroundImage: "url(/mountains.jpg)" }}>
+    <main className="w-full h-screen relative overflow-y-scroll m-0 p-0">
       {/* Navigation Menu */}
       <div className="absolute top-20 left-0 text-white py-4 z-20">
         <NavigationMenuDemo />
+      </div>
+
+      {/* Home as Background */}
+      <div className="fixed inset-0 z-0">
+        <Home />
       </div>
 
       <div className="flex flex-col items-center justify-center w-full h-full">

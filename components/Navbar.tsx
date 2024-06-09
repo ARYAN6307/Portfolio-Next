@@ -1,15 +1,40 @@
-'use client';import { Socials } from "@/constants";
+'use client';
+import { Socials } from "@/constants";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import MenuIcon from "@/public/burger-menu.png"; // Adjust the path according to your project structure
+import MusicIcon from "@/public/music.png"; // Adjust the path according to your project structure
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const toggleNavbar = () => {
     setIsVisible(!isVisible);
   };
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch((error) => {
+          console.error('Audio playback failed:', error);
+        });
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.addEventListener('ended', () => setIsPlaying(false));
+    }
+  }, []);
 
   return (
     <div>
@@ -25,7 +50,7 @@ const Navbar = () => {
           className="w-full h-full object-contain"
         />
       </button>
-      
+
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: isVisible ? 0 : -100 }}
@@ -51,7 +76,7 @@ const Navbar = () => {
           </h1>
         </div>
 
-        <div className="flex flex-row gap-5 mb-2">
+        <div className="flex flex-row gap-5 items-center mb-2">
           {Socials.map((social) => (
             <Image
               key={social.name}
@@ -61,8 +86,28 @@ const Navbar = () => {
               height={28}
             />
           ))}
+          
+          <div className="relative group">
+            <button
+              onClick={toggleMusic}
+              className="p-2 rounded"
+            >
+              <Image
+                src={MusicIcon}
+                alt="Music Icon"
+                width={28}
+                height={28}
+                className="w-full h-full object-contain"
+              />
+            </button>
+            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mt-2 w-max bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              Click to get webbed
+            </div>
+          </div>
         </div>
       </motion.div>
+
+      <audio ref={audioRef} src="/ambient.mp3" />
     </div>
   );
 };
