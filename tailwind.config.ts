@@ -13,6 +13,18 @@ const config: Config = {
   darkMode: 'media',
   theme: {
     extend: {
+      transitionProperty: {
+        'transform': 'transform',
+      },
+      transitionDuration: {
+        '200': '200ms',
+      },
+      transitionTimingFunction: {
+        'ease-in-out': 'ease-in-out',
+      },
+      rotate: {
+        '5': '5deg',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

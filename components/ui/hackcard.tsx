@@ -26,8 +26,8 @@ export function FollowingPointerDemo({ blogContent }: FollowingPointerDemoProps)
           />
         }
       >
-        <div className="relative overflow-hidden h-full rounded-2xl transition duration-200 group bg-white hover:shadow-xl border border-zinc-100">
-          <div className="relative w-full pb-[56.25%] bg-gray-100 rounded-tr-lg rounded-tl-lg overflow-hidden">
+        <div className="relative overflow-hidden h-full rounded-2xl transition duration-200 group bg-black hover:shadow-xl border border-zinc-100">
+          <div className="relative w-full pb-[56.25%] bg-black-100 rounded-tr-lg rounded-tl-lg overflow-hidden">
             <Image
               src={blogContent.image}
               alt="thumbnail"
@@ -37,10 +37,10 @@ export function FollowingPointerDemo({ blogContent }: FollowingPointerDemoProps)
             />
           </div>
           <div className="p-4">
-            <h2 className="font-bold my-4 text-lg text-zinc-700">
+            <h2 className="font-bold my-4 text-lg text-white">
               {blogContent.title}
             </h2>
-            <h2 className="font-normal my-4 text-sm text-zinc-500">
+            <h2 className="font-normal my-4 text-sm text-zinc-400">
               {blogContent.description}
             </h2>
             <div className="flex flex-row justify-between items-center mt-10">

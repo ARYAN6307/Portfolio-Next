@@ -81,7 +81,7 @@ export default function Hackathons() {
         </div>
       
 
-      <div className="absolute top-20 left-0 text-white py-4 z-20">
+      <div className=" top-20 left-0 text-white py-4 z-20 fixed">
         <NavigationMenuDemo />
         
       </div>
@@ -124,6 +124,7 @@ export default function Hackathons() {
             <p className="text-gray-200 text-sm md:text-base text-center max-w-[1000px] p-5 sm:p-0">
               I won the Tech Nova Hackathon with my project Praykart. The project involved innovative use of Flutter and Website technology to solve a real-world problem. It was a great experience working with a talented team and receiving recognition for our hard work.
             </p>
+            
           </section>
 
           {/* Other Hackathons Section */}

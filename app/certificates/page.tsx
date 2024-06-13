@@ -383,25 +383,21 @@ const Page: React.FC = () => {
   };
 
   return (
-    <div
-      style={{ backgroundImage: "url(/mountains.jpg)" }}
-      className="w-screen h-screen flex items-center flex-col justify-center bg-center bg-cover overflow-scroll overflow-x-hidden"
-    >
-      <h2 className="text-center text-4xl font-bold text-white z-10 mt-14 md:mb-12">
-        My Certificates
-      </h2>
-      
-      {/* Add NavigationMenuDemo */}
-      <div className="absolute top-20 left-0 text-white py-4">
-        <NavigationMenuDemo />
-      </div>
-
+    <div className="relative w-screen h-screen overflow-x-hidden">
       <div className="fixed inset-0 z-0">
         <Home />
       </div>
       
-      <div className="flex items-center flex-col gap-5 max-w-[90%] max-h-[90%] sm:px-5">
-        <div className="text-white flex flex-wrap justify-center items-center gap-2 py-6 scale-70 sm:scale-70 lg:scale-100">
+      <div className="fixed top-20  text-white  left-0 z-20">
+        <NavigationMenuDemo />
+      </div>
+      
+      <div className="relative z-10 flex flex-col items-center justify-start min-h-screen pt-10 px-5 overflow-y-auto">
+        <h2 className="text-center text-4xl font-bold text-white mb-12">
+          My Certificates
+        </h2>
+        
+        <div className="text-white flex flex-wrap justify-center items-center gap-2 py-6">
           <ProjectTag
             onClick={() => handleTagChange("All")}
             name="All"
@@ -427,12 +423,13 @@ const Page: React.FC = () => {
             name="Sololearn"
             isSelected={tag === "UI"}
           />
-         <ProjectTag
+          <ProjectTag
             onClick={() => handleTagChange("others")}
             name="Others"
             isSelected={tag === "others"}
           />
         </div>
+        
         <ul ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 pb-20">
           {filteredProjects.map((project, index) => (
             <motion.li
@@ -447,7 +444,7 @@ const Page: React.FC = () => {
                 title={project.title}
                 text={project.description}
                 previewUrl={project.previewUrl}
-                tooltipData={project.tooltipData}
+                tooltipData={project.tooltipData} // Pass the tooltipData here
               />
             </motion.li>
           ))}

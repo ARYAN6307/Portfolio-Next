@@ -15,7 +15,7 @@ export default function CodingProfiles() {
   return (
     <main className="w-full h-screen relative overflow-y-scroll m-0 p-0">
       {/* Navigation Menu */}
-      <div className="absolute top-20 left-0 text-white py-4 z-20">
+      <div className="fixed top-20 left-0 text-white py-4 z-20">
         <NavigationMenuDemo />
       </div>
 
